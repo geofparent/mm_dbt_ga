@@ -1,15 +1,18 @@
-name: 'ga_replicate'
+name: 'mm_ga'
 profile: 'default'
 version: '1.0'
 
 # IMPORTANT: please define your BQ Google Analytics table here using standard SQL conventions # and with _* suffix instead of the date. 
 # You can override the rangeStart and rangeEnd variables here or when running the model (--# vars - https://docs.getdbt.com/v0.12/docs/using-variables). 
 
+##pulling 5 month of data in this profile
+
 models: 
-      vars:
-        rangeStart: '20190701'
-        rangeEnd: '20190701'
-        tableName: '`your_ga_table_with_*`'
+
+vars:
+  rangeStart: '20190101'
+  rangeEnd: '20190501'
+  tableName: '`bigquery-public-data.google_analytics_sample.ga_sessions_*`'
 
 source-paths: ["models"]
 analysis-paths: ["analysis"] 
